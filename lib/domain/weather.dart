@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import 'package:weatherapp/application/location.dart';
+import 'package:weatherapp/domain/location.dart';
 
 part 'weather.freezed.dart';
 part 'weather.g.dart';

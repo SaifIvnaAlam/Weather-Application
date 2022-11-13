@@ -1,4 +1,4 @@
-import 'package:weatherapp/application/weather.dart';
+import 'weather.dart';
 
 abstract class IGetweather {
   Future<Weather> getWeather();
