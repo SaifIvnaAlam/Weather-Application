@@ -1,5 +1,5 @@
 import 'weather.dart';
 
-abstract class IGetweather {
+abstract class IGetweatherRepo {
   Future<Weather> getWeather();
 }
