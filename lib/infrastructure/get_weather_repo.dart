@@ -12,6 +12,6 @@ class GetWeatherRepo implements IGetweatherRepo {
     var data = jsonDecode(response.body);
     var weatherResponse = Weather.fromJson(data as Map<String, dynamic>);
 
-    return weatherResponse;
+    return (weatherResponse);
   }
 }

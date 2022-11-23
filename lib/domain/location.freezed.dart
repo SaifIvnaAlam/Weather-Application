@@ -40,7 +40,8 @@ mixin _$Location {
 /// @nodoc
 abstract class $LocationCopyWith<$Res> {
   factory $LocationCopyWith(Location value, $Res Function(Location) then) =
-      _$LocationCopyWithImpl<$Res>;
+      _$LocationCopyWithImpl<$Res, Location>;
+  @useResult
   $Res call(
       {String name,
       String region,
@@ -53,58 +54,61 @@ abstract class $LocationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LocationCopyWithImpl<$Res> implements $LocationCopyWith<$Res> {
+class _$LocationCopyWithImpl<$Res, $Val extends Location>
+    implements $LocationCopyWith<$Res> {
   _$LocationCopyWithImpl(this._value, this._then);
 
-  final Location _value;
   // ignore: unused_field
-  final $Res Function(Location) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? region = freezed,
-    Object? country = freezed,
-    Object? lat = freezed,
-    Object? lon = freezed,
+    Object? name = null,
+    Object? region = null,
+    Object? country = null,
+    Object? lat = null,
+    Object? lon = null,
     Object? tzid = freezed,
     Object? localtimeepoch = freezed,
-    Object? localtime = freezed,
+    Object? localtime = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      region: region == freezed
+      region: null == region
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
               as String,
-      country: country == freezed
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      lat: lat == freezed
+      lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
               as double,
-      lon: lon == freezed
+      lon: null == lon
           ? _value.lon
           : lon // ignore: cast_nullable_to_non_nullable
               as double,
-      tzid: tzid == freezed
+      tzid: freezed == tzid
           ? _value.tzid
           : tzid // ignore: cast_nullable_to_non_nullable
               as String?,
-      localtimeepoch: localtimeepoch == freezed
+      localtimeepoch: freezed == localtimeepoch
           ? _value.localtimeepoch
           : localtimeepoch // ignore: cast_nullable_to_non_nullable
               as double?,
-      localtime: localtime == freezed
+      localtime: null == localtime
           ? _value.localtime
           : localtime // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -114,6 +118,7 @@ abstract class _$$_LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
           _$_Location value, $Res Function(_$_Location) then) =
       __$$_LocationCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String name,
       String region,
@@ -126,56 +131,55 @@ abstract class _$$_LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LocationCopyWithImpl<$Res> extends _$LocationCopyWithImpl<$Res>
+class __$$_LocationCopyWithImpl<$Res>
+    extends _$LocationCopyWithImpl<$Res, _$_Location>
     implements _$$_LocationCopyWith<$Res> {
   __$$_LocationCopyWithImpl(
       _$_Location _value, $Res Function(_$_Location) _then)
-      : super(_value, (v) => _then(v as _$_Location));
+      : super(_value, _then);
 
-  @override
-  _$_Location get _value => super._value as _$_Location;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? region = freezed,
-    Object? country = freezed,
-    Object? lat = freezed,
-    Object? lon = freezed,
+    Object? name = null,
+    Object? region = null,
+    Object? country = null,
+    Object? lat = null,
+    Object? lon = null,
     Object? tzid = freezed,
     Object? localtimeepoch = freezed,
-    Object? localtime = freezed,
+    Object? localtime = null,
   }) {
     return _then(_$_Location(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      region: region == freezed
+      region: null == region
           ? _value.region
           : region // ignore: cast_nullable_to_non_nullable
               as String,
-      country: country == freezed
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      lat: lat == freezed
+      lat: null == lat
           ? _value.lat
           : lat // ignore: cast_nullable_to_non_nullable
               as double,
-      lon: lon == freezed
+      lon: null == lon
           ? _value.lon
           : lon // ignore: cast_nullable_to_non_nullable
               as double,
-      tzid: tzid == freezed
+      tzid: freezed == tzid
           ? _value.tzid
           : tzid // ignore: cast_nullable_to_non_nullable
               as String?,
-      localtimeepoch: localtimeepoch == freezed
+      localtimeepoch: freezed == localtimeepoch
           ? _value.localtimeepoch
           : localtimeepoch // ignore: cast_nullable_to_non_nullable
               as double?,
-      localtime: localtime == freezed
+      localtime: null == localtime
           ? _value.localtime
           : localtime // ignore: cast_nullable_to_non_nullable
               as String,
@@ -228,38 +232,34 @@ class _$_Location implements _Location {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Location &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.region, region) &&
-            const DeepCollectionEquality().equals(other.country, country) &&
-            const DeepCollectionEquality().equals(other.lat, lat) &&
-            const DeepCollectionEquality().equals(other.lon, lon) &&
-            const DeepCollectionEquality().equals(other.tzid, tzid) &&
-            const DeepCollectionEquality()
-                .equals(other.localtimeepoch, localtimeepoch) &&
-            const DeepCollectionEquality().equals(other.localtime, localtime));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.region, region) || other.region == region) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.lon, lon) || other.lon == lon) &&
+            (identical(other.tzid, tzid) || other.tzid == tzid) &&
+            (identical(other.localtimeepoch, localtimeepoch) ||
+                other.localtimeepoch == localtimeepoch) &&
+            (identical(other.localtime, localtime) ||
+                other.localtime == localtime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(region),
-      const DeepCollectionEquality().hash(country),
-      const DeepCollectionEquality().hash(lat),
-      const DeepCollectionEquality().hash(lon),
-      const DeepCollectionEquality().hash(tzid),
-      const DeepCollectionEquality().hash(localtimeepoch),
-      const DeepCollectionEquality().hash(localtime));
+  int get hashCode => Object.hash(runtimeType, name, region, country, lat, lon,
+      tzid, localtimeepoch, localtime);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LocationCopyWith<_$_Location> get copyWith =>
       __$$_LocationCopyWithImpl<_$_Location>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LocationToJson(this);
+    return _$$_LocationToJson(
+      this,
+    );
   }
 }
 

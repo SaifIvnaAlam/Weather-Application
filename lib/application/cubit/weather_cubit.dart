@@ -12,7 +12,8 @@ class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit(this._getweatherRepo) : super(const WeatherState.loading());
 
   Future getAllWeather() async {
-    var weatherList = await _getweatherRepo.getWeather();
-    emit(WeatherState.loaded(weatherList));
+    var weatherRespose = await _getweatherRepo.getWeather();
+
+    emit(WeatherState.loaded(weatherRespose));
   }
 }
